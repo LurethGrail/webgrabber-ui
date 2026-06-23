@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>webgrabber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="dashboard-mode">
+<div class="layout">
+
+  <header>
+    <div class="header-main">
+      <h1>//&nbsp;<span>webgrabber</span></h1>
+      <span class="version">v1.0</span>
+      <div class="header-actions">
+        <select class="theme-select" id="theme-select" onchange="setTheme(this.value)">
+          <option value="dark">dark</option>
+          <option value="light">light</option>
+          <option value="darker">darker</option>
+        </select>
+        <button class="icon-btn" id="layout-toggle" onclick="toggleLayout()" title="Toggle dashboard/classic layout">classic</button>
+      </div>
+    </div>
+    <div class="header-divider-h"></div>
+  </header>
+
+  <div class="dashboard-grid">
+
+    <!-- URL -->
+    <div class="section blinking" id="sec-url">
+      <div class="section-header">
+        <div class="dot"></div>
+        01 — URL
+      </div>
+      <div class="section-body">
+        <div class="setting-label">YouTube URL</div>
+        <input type="text" id="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="off">
+        <div id="meta" class="meta" hidden>
+          <img id="thumb" alt="">
+          <div class="meta-text">
+            <div id="metaTitle"></div>
+            <div id="metaSub"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="section" id="sec-settings">
+      <div class="section-header">
+        <div class="dot"></div>
+        02 — Settings
+      </div>
+      <div class="section-body">
+        <div class="settings-grid">
+
+          <div class="setting-item full">
+            <div class="setting-label">Output name</div>
+            <input type="text" id="filename" placeholder="Auto (video title)">
+          </div>
+
+          <div class="setting-item full">
+            <div class="setting-label">Format</div>
+            <div class="fmt-grid">
+              <button class="toggle-btn active" data-format="mp4">MP4</button>
+              <button class="toggle-btn" data-format="mkv">MKV</button>
+              <button class="toggle-btn" data-format="webm">WEBM</button>
+              <button class="toggle-btn" data-format="mp3">MP3</button>
+            </div>
+          </div>
+
+          <div class="setting-item full">
+            <div class="setting-label">Save to</div>
+            <input type="text" id="outputDir" value="{{ default_dir }}">
+          </div>
+
+        </div>
+        <button class="run-btn" id="downloadBtn">DOWNLOAD</button>
+      </div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="section" id="sec-progress">
+      <div class="section-header">
+        <div class="dot"></div>
+        03 — Progress
+        <span style="margin-left:auto">
+          <span class="status-pill idle" id="status-pill">
+            <span id="status-text">idle</span>
+          </span>
+        </span>
+      </div>
+      <div class="section-body">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-meta">
+          <span class="stage-label" id="progressMsg">no active job</span>
+          <span class="pct-label" id="pct-label">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="section download-section" id="sec-result">
+      <div class="section-header">
+        <div class="dot"></div>
+        04 — Result
+      </div>
+      <div class="section-body">
+        <div id="resultMsg" class="result-msg"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

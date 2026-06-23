@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "webgrabber",
+      "runtimeExecutable": "/Users/lurethgrail/Documents/GitHub/webgrabber/.venv/bin/python",
+      "runtimeArgs": ["server.py"],
+      "port": 5000,
+      "cwd": "/Users/lurethgrail/Documents/GitHub/webgrabber"
+    }
+  ]
+}
